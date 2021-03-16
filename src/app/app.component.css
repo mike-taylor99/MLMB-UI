@@ -1,0 +1,21 @@
+@font-face {font-family: "Legacy"; src: url("//db.onlinewebfonts.com/t/8f55c83f07c208d4d0d6f4c6dbb9d665.eot"); src: url("//db.onlinewebfonts.com/t/8f55c83f07c208d4d0d6f4c6dbb9d665.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8f55c83f07c208d4d0d6f4c6dbb9d665.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8f55c83f07c208d4d0d6f4c6dbb9d665.woff") format("woff"), url("//db.onlinewebfonts.com/t/8f55c83f07c208d4d0d6f4c6dbb9d665.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8f55c83f07c208d4d0d6f4c6dbb9d665.svg#Legacy") format("svg"); }
+
+#title {
+    font-family: Legacy;
+    color: #FA8320;
+    font-size: xxx-large;
+}
+
+.nav-link {
+    font-family: Legacy;
+    font-size: x-large;
+    color: white !important;
+}
+
+.nav-link:hover {
+    color:  #FA8320 !important;
+}
+
+#currentpage {
+    color:  #FA8320 !important;
+}
