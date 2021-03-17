@@ -11,7 +11,20 @@
     font-size: x-large;
     color: white !important;
 }
+.nav-link:hover {
+    background-color:  #FA8320 !important;
+}
 
+#currentpage {
+    background-color:  #FA8320 !important;
+}
+
+footer {
+    color: white;
+    display: block;
+}
+
+/*
 .nav-link:hover {
     color:  #FA8320 !important;
 }
@@ -19,3 +32,4 @@
 #currentpage {
     color:  #FA8320 !important;
 }
+*/

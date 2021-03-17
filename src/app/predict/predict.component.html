@@ -1,1 +1,56 @@
-<p>predict works!</p>
+<div class="container-md text- left">
+    <h3>Input Matchups</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Machine Learning Model</th>
+            <th scope="col">Home Team</th>
+            <th scope="col">Away Team</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>
+            <div ngbDropdown container="body">
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+                <div ngbDropdownMenu>
+                <button ngbDropdownItem>Edit</button>
+                <button ngbDropdownItem>Duplicate</button>
+                <button ngbDropdownItem>Move</button>
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem>Delete</button>
+                </div>
+            </div>
+            </td>
+            <td class="overflow-hidden">
+            <div ngbDropdown container="body">
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+                <div ngbDropdownMenu>
+                <button ngbDropdownItem>Edit</button>
+                <button ngbDropdownItem>Duplicate</button>
+                <button ngbDropdownItem>Move</button>
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem>Delete</button>
+                </div>
+            </div>
+            <small class="text-muted">Dropdown uses container "body"</small>
+            </td>
+            <td class="overflow-hidden">
+            <div ngbDropdown>
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+                <div ngbDropdownMenu>
+                <button ngbDropdownItem>Edit</button>
+                <button ngbDropdownItem>Duplicate</button>
+                <button ngbDropdownItem>Move</button>
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem>Delete</button>
+                </div>
+            </div>
+            <small class="text-muted">Default dropdown</small>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

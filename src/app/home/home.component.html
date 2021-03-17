@@ -1,1 +1,41 @@
-<p>home works!</p>
+<div class="container-lg text-center" id="homeHeading">
+    <div>
+        <span id="accr">M</span><span id="rest">achine </span><span id="accr">L</span><span id="rest">earning on </span><span id="accr">M</span><span id="rest">en's </span><span id="accr">B</span><span id="rest">asketball</span>
+    </div>
+    <div class="description container">
+        <p>
+            This project analyzes NCAA basketball data with the Python 3.x sportsreference API. We have built several Machine Learning Models to predict the outcomes of NCAA regular season and March Madness basketball tournament games.
+        </p>
+    </div>
+</div>
+<ngb-carousel *ngIf="images" class="container-sm">
+    <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+        <img [src]="images[0]" alt="2014 UConn Men's Basketball">
+    </div>
+    <div class="carousel-caption">
+        <h3>2014 National Champions...</h3>
+        <p>UConn was the first 7 seed ever to reach and win the championship.</p>
+    </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+        <img [src]="images[1]" alt="2011 UConn Men's Basketball">
+    </div>
+    <div class="carousel-caption">
+        <h3>2011 National Champions...</h3>
+        <p>One of the greatest runs in NCAA history.</p>
+    </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[2]" alt="MARCH mADNESS">
+        </div>
+        <div class="carousel-caption">
+            <h3>The Big Dance...</h3>
+            <p>The NCAA Division I Men's Basketball Tournament.</p>
+        </div>
+        </ng-template>
+</ngb-carousel>
