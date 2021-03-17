@@ -1,9 +1,8 @@
 <div class="container-md text- left">
-    <h3>Input Matchups</h3>
-    <table class="table table-striped">
+    <h3 *ngIf="takeinput">Input Matchups</h3>
+    <table class="table table-striped" *ngIf="takeinput">
         <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Machine Learning Model</th>
             <th scope="col">Home Team</th>
             <th scope="col">Away Team</th>
@@ -11,46 +10,68 @@
         </thead>
         <tbody>
         <tr>
-            <td>1</td>
             <td>
             <div ngbDropdown container="body">
-                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>{{model}}</button>
                 <div ngbDropdownMenu>
-                <button ngbDropdownItem>Edit</button>
-                <button ngbDropdownItem>Duplicate</button>
-                <button ngbDropdownItem>Move</button>
+                <button ngbDropdownItem *ngFor="let modelOpt of models" (click)="model=modelOpt">{{modelOpt}}</button>
                 <div class="dropdown-divider"></div>
-                <button ngbDropdownItem>Delete</button>
+                <button ngbDropdownItem>Ensemble</button>
                 </div>
             </div>
             </td>
             <td class="overflow-hidden">
             <div ngbDropdown container="body">
-                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>{{team1}}</button>
                 <div ngbDropdownMenu>
-                <button ngbDropdownItem>Edit</button>
-                <button ngbDropdownItem>Duplicate</button>
-                <button ngbDropdownItem>Move</button>
-                <div class="dropdown-divider"></div>
-                <button ngbDropdownItem>Delete</button>
+                <button ngbDropdownItem *ngFor="let teamOpt of teams" (click)="team1=teamOpt">{{teamOpt}}</button>
                 </div>
             </div>
-            <small class="text-muted">Dropdown uses container "body"</small>
+            <small class="text-muted">If tournament matchup, choose team with higher ranking</small>
             </td>
             <td class="overflow-hidden">
-            <div ngbDropdown>
-                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+            <div ngbDropdown container="body">
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>{{team2}}</button>
                 <div ngbDropdownMenu>
-                <button ngbDropdownItem>Edit</button>
-                <button ngbDropdownItem>Duplicate</button>
-                <button ngbDropdownItem>Move</button>
-                <div class="dropdown-divider"></div>
-                <button ngbDropdownItem>Delete</button>
+                <button ngbDropdownItem *ngFor="let teamOpt of teams" (click)="team2=teamOpt">{{teamOpt}}</button>
                 </div>
             </div>
-            <small class="text-muted">Default dropdown</small>
+            <small class="text-muted">If tournament matchup, choose team with lower ranking</small>
             </td>
         </tr>
         </tbody>
     </table>
+    <p *ngIf="takeinput" class="text-left text-danger">{{warning}}</p>
+    <button *ngIf="takeinput" (click)="checkInputs()" class="btn btn-primary waves-effect waves-light">Analyze</button>
+ 
+    <button *ngIf="!takeinput" (click)="takeinput=!takeinput; team1='--'; team2='--'; model='--'" class="btn btn-info waves-effect waves-light">Back</button>
+    <div *ngIf="!takeinput" class="card container col-12 col-md-10 col-lg-8 mt-3 mb-5">
+        <div class="card-header">
+        <div class="float-left" style="font-size:2.5vw;">NCAA men's basketball</div>
+        <div class="float-right" style="font-size:2.5vw;">Final</div>
+        </div>
+        <div class="card-body">
+        <div class="row">
+            <div class="col">
+            <img class="float-left pb-3" style="width:40%"  src={{logos[team1]}}/>
+            <h1 class="float-right" style="font-size:8vw;">W</h1>
+            </div>
+            <div class="col-sm6"><h1 class="float-center" style="font-size:8vw;">-</h1></div>
+            <div class="col">
+            <img class="float-right pb-3" style="width:40%" src={{logos[team2]}}/>
+            <h1 class="float-left" style="font-size:8vw;">L</h1>
+            </div>
+        </div>
+    
+        <footer>
+            <div class="float-left" style="font-size:3vw;">
+            {{team1}}
+            </div>
+            <div class="float-right" style="font-size:3vw;">
+            {{team2}}
+            </div>
+        </footer>
+    
+        </div>
+    </div>
 </div>
