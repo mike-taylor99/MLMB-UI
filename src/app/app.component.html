@@ -11,13 +11,13 @@
     <ul class="navbar-nav ml-auto nav-tabs">
       <li class="nav-item">
         <!-- Step 4: Close the menu when a link is clicked. -->
-        <a class="nav-link" [id]="aboutpage" [routerLink]="'/about'" (click)="isMenuCollapsed = true; aboutpage='currentpage'; predictpage=''">About</a>
+        <a class="nav-link h3" [id]="aboutpage" [routerLink]="'/about'" (click)="isMenuCollapsed = true; aboutpage='currentpage'; predictpage=''">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [id]="predictpage" [routerLink]="'/predict'" (click)="isMenuCollapsed = true; aboutpage=''; predictpage='currentpage'">Predict</a>
+        <a class="nav-link h3" [id]="predictpage" [routerLink]="'/predict'" (click)="isMenuCollapsed = true; aboutpage=''; predictpage='currentpage'">Predict</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/mike-taylor99/MLMB" (click)="isMenuCollapsed = true"><fa-icon [icon]="faGithub"></fa-icon></a>
+        <a class="nav-link h3" href="https://github.com/mike-taylor99/MLMB" (click)="isMenuCollapsed = true"><fa-icon [icon]="faGithub"></fa-icon></a>
       </li>
     </ul>
   </div>

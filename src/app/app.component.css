@@ -3,12 +3,14 @@
 #title {
     font-family: Legacy;
     color: #FA8320;
-    font-size: xxx-large;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
 }
 
 .nav-link {
     font-family: Legacy;
-    font-size: x-large;
     color: white !important;
 }
 .nav-link:hover {
