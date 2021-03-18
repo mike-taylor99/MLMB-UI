@@ -1,4 +1,4 @@
-<div class="container-md text- left">
+<div class="container-md text- left mb-5">
     <h3 *ngIf="takeinput">Input Matchups</h3>
     <table class="table table-striped" *ngIf="takeinput">
         <thead>
@@ -6,13 +6,31 @@
             <th scope="col">Machine Learning Model</th>
             <th scope="col">Home Team</th>
             <th scope="col">Away Team</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
+        <tr *ngFor="let matchup of matchups">
+            <td>
+                <p>{{matchup.model}}</p>
+            </td>
+            <td>
+                <p>{{matchup.team1}}</p>
+            </td>
+            <td>
+                <p>{{matchup.team2}}</p>
+            </td>
+            <td>
+                <button class="btn btn-outline-primary btn-sm">
+                    <fa-icon [icon]="delete" (click)="deleteMatchup(matchup)"></fa-icon>
+                </button>
+            </td>
+        </tr>
         <tr>
             <td>
+            <p>{{model}}</p>
             <div ngbDropdown container="body">
-                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>{{model}}</button>
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Select</button>
                 <div ngbDropdownMenu>
                 <button ngbDropdownItem *ngFor="let modelOpt of models" (click)="model=modelOpt">{{modelOpt}}</button>
                 <div class="dropdown-divider"></div>
@@ -21,8 +39,9 @@
             </div>
             </td>
             <td class="overflow-hidden">
+            <p>{{team1}}</p>
             <div ngbDropdown container="body">
-                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>{{team1}}</button>
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Select</button>
                 <div ngbDropdownMenu>
                 <button ngbDropdownItem *ngFor="let teamOpt of teams" (click)="team1=teamOpt">{{teamOpt}}</button>
                 </div>
@@ -30,48 +49,55 @@
             <small class="text-muted">If tournament matchup, choose team with higher ranking</small>
             </td>
             <td class="overflow-hidden">
+            <p>{{team2}}</p>
             <div ngbDropdown container="body">
-                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>{{team2}}</button>
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Select</button>
                 <div ngbDropdownMenu>
                 <button ngbDropdownItem *ngFor="let teamOpt of teams" (click)="team2=teamOpt">{{teamOpt}}</button>
                 </div>
             </div>
             <small class="text-muted">If tournament matchup, choose team with lower ranking</small>
             </td>
+            <td class="overflow-hidden">
+                <p><br></p>
+                <button class="btn btn-outline-primary btn-sm" (click)="checkInputs()">+</button>
+            </td>
         </tr>
         </tbody>
     </table>
     <p *ngIf="takeinput" class="text-left text-danger">{{warning}}</p>
-    <button *ngIf="takeinput" (click)="checkInputs()" class="btn btn-primary waves-effect waves-light">Analyze</button>
+    <button *ngIf="takeinput" (click)="makeAnalysis()" class="btn btn-primary waves-effect waves-light">Analyze</button>
  
     <button *ngIf="!takeinput" (click)="takeinput=!takeinput; team1='--'; team2='--'; model='--'" class="btn btn-info waves-effect waves-light">Back</button>
-    <div *ngIf="!takeinput" class="card container col-12 col-md-10 col-lg-8 mt-3 mb-5">
-        <div class="card-header">
-        <div class="float-left" style="font-size:2.5vw;">NCAA men's basketball</div>
-        <div class="float-right" style="font-size:2.5vw;">Final</div>
-        </div>
-        <div class="card-body">
-        <div class="row">
-            <div class="col">
-            <img class="float-left pb-3" style="width:40%"  src={{logos[team1]}}/>
-            <h1 class="float-right" style="font-size:8vw;">W</h1>
+    <div *ngIf="!takeinput">
+        <div class="card container col-12 col-md-10 col-lg-8 mt-3 mb-5" *ngFor="let matchup of matchups">
+            <div class="card-header">
+            <div class="float-left" style="font-size:2.5vw;">NCAA men's basketball</div>
+            <div class="float-right" style="font-size:2.5vw;">Final</div>
             </div>
-            <div class="col-sm6"><h1 class="float-center" style="font-size:8vw;">-</h1></div>
-            <div class="col">
-            <img class="float-right pb-3" style="width:40%" src={{logos[team2]}}/>
-            <h1 class="float-left" style="font-size:8vw;">L</h1>
+            <div class="card-body">
+            <div class="row">
+                <div class="col">
+                <img class="float-left pb-3" style="width:40%"  src={{logos[matchup.team1]}}/>
+                <h1 class="float-right" style="font-size:8vw;">W</h1>
+                </div>
+                <div class="col-sm6"><h1 class="float-center" style="font-size:8vw;">-</h1></div>
+                <div class="col">
+                <img class="float-right pb-3" style="width:40%" src={{logos[matchup.team2]}}/>
+                <h1 class="float-left" style="font-size:8vw;">L</h1>
+                </div>
             </div>
-        </div>
-    
-        <footer>
-            <div class="float-left" style="font-size:3vw;">
-            {{team1}}
+        
+            <footer>
+                <div class="float-left" style="font-size:3vw;">
+                {{matchup.team1}}
+                </div>
+                <div class="float-right" style="font-size:3vw;">
+                {{matchup.team2}}
+                </div>
+            </footer>
+        
             </div>
-            <div class="float-right" style="font-size:3vw;">
-            {{team2}}
-            </div>
-        </footer>
-    
         </div>
     </div>
 </div>

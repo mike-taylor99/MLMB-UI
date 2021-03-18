@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { faPlusSquare } from '@fortawesome/free-regular-svg-icons'
 
 @Component({
   selector: 'app-predict',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./predict.component.css']
 })
 export class PredictComponent implements OnInit {
+
+  delete = faTrashAlt;
+  add = faPlusSquare;
 
   takeinput = true;
   warning = '';
@@ -20,6 +25,8 @@ export class PredictComponent implements OnInit {
   team1 = '--';
   team2 = '--';
 
+  matchups: {'model':string, 'team1':string, 'team2':string}[] = new Array<any>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -29,6 +36,25 @@ export class PredictComponent implements OnInit {
   checkInputs() {
     if(this.model === '--' || this.team1 === '--' || this.team2 === '--') {
       this.warning = "Enter a valid input!";
+    } else {
+      this.warning = "";
+      // this.takeinput = !this.takeinput;
+      this.matchups.push({'model':this.model, 'team1':this.team1, 'team2':this.team2});
+      this.model = '--';
+      this.team1 = '--';
+      this.team2 = '--';
+    }
+  }
+
+  deleteMatchup(input:any) {
+    this.matchups.forEach((value, index)=>{
+      if(value===input) this.matchups.splice(index,1);
+    })
+  }
+
+  makeAnalysis() {
+    if(this.matchups.length === 0) {
+      this.warning = "Add a matchup to table!";
     } else {
       this.warning = "";
       this.takeinput = !this.takeinput;

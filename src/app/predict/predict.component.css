@@ -1,0 +1,8 @@
+.dropdown-menu {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+img {
+    filter: drop-shadow(1px 1px 4px black);
+}
