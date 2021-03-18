@@ -62,7 +62,7 @@ export class PredictComponent implements OnInit {
       this.takeinput = !this.takeinput;
 
       for (let i = 0; i < this.matchups.length; i++) {
-        this.http.post('http://mlmb.herokuapp.com/predict', this.matchups[i]).subscribe((data:any) => {
+        this.http.post('https://mlmb.herokuapp.com/predict', this.matchups[i]).subscribe((data:any) => {
           this.predictions.push(data);
         })
       }
