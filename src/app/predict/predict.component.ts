@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons'
 
+import { HttpClient } from "@angular/common/http";
+
 @Component({
   selector: 'app-predict',
   templateUrl: './predict.component.html',
@@ -26,11 +28,11 @@ export class PredictComponent implements OnInit {
   team2 = '--';
 
   matchups: {'model':string, 'team1':string, 'team2':string}[] = new Array<any>();
+  predictions: {'model':string, 'team1':string, 'team2':string, 'predict_home':string, 'predict_away':string}[] = new Array<any>();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    console.log(this.teams);
   }
 
   checkInputs() {
@@ -58,6 +60,12 @@ export class PredictComponent implements OnInit {
     } else {
       this.warning = "";
       this.takeinput = !this.takeinput;
+
+      for (let i = 0; i < this.matchups.length; i++) {
+        this.http.post('http://mlmb.herokuapp.com/predict', this.matchups[i]).subscribe((data:any) => {
+          this.predictions.push(data);
+        })
+      }
     }
   }
 
