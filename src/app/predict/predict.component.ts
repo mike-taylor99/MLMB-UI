@@ -17,10 +17,10 @@ export class PredictComponent implements OnInit {
   takeinput = true;
   warning = '';
   models = [
-    'Neural Network',
-    'Random Forest Regressors',
-    'Linear Regression',
-    'Support Vector Machine'
+    'Logistic Regression',
+    'Support Vector Classifier',
+    'Random Forest Classifier',
+    'Gradient Boosting Classifier'
   ]
 
   model = '--';
@@ -28,7 +28,7 @@ export class PredictComponent implements OnInit {
   team2 = '--';
 
   matchups: {'model':string, 'team1':string, 'team2':string}[] = new Array<any>();
-  predictions: {'model':string, 'team1':string, 'team2':string, 'predict_home':string, 'predict_away':string}[] = new Array<any>();
+  predictions: {'model':string, 'team1':string, 'team2':string, 'predict_home':string, 'predict_away':string, 'p_home':string, 'p_away':string}[] = new Array<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -60,6 +60,7 @@ export class PredictComponent implements OnInit {
     } else {
       this.warning = "";
       this.takeinput = !this.takeinput;
+      this.predictions = new Array<any>();
 
       for (let i = 0; i < this.matchups.length; i++) {
         this.http.post('https://mlmb.herokuapp.com/predict', this.matchups[i]).subscribe((data:any) => {

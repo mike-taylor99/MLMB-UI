@@ -1,10 +1,19 @@
 <div class="container-md text- left mb-5">
     <h3>About</h3>
     <p>
-        This project analyzes NCAA basketball data with the Python 3.x sportsreference API. We have built several Machine Learning Models to predict the outcomes of NCAA regular season and March Madness basketball tournament games.
+        This project analyzes NCAA basketball data with the Python 3.x sportsreference API. 
+        We have built several Machine Learning Models to predict the outcomes of NCAA regular 
+        season and March Madness basketball tournament games. In order to make matchup predictions, 
+        we pre-processed boxscore data to calculate the moving averages of the statistics for each team 
+        prior to playing in a matchup. All models were trained using these moving averages.
     </p>
 
     <h3>Testing Results</h3>
+    <p>
+      Testing results were trained and measured on a partitioned dataset 
+      of the 2020 NCAA Men's Basketball season. Future implementations 
+      will analyze larger dataset with data from the 2010 - 2021 seasons.
+    </p>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -15,13 +24,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
+        <tr *ngFor="let model of models; index as i">
+          <th scope="row">{{i+1}}</th>
           <td>
-            Neural Network
+            {{model.model}}
           </td>
-          <td>--%</td>
-          <td>Custom TensorFlow model</td>
+          <td>{{model.accuracy}}</td>
+          <td>{{model.description}}</td>
         </tr>
         </tbody>
       </table>
